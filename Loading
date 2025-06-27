@@ -1,213 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap%27');  /*font*/
-
-:root {
-  --FVUI: "SoftX";
-  --font: "Comfortaa" ;
-}
-
-:root{ /* Colors for users customization */
-	--color1: 30, 40,  50;   /* Additional BG */
-	--color2: 9,  18,  24;   /* Background */
-	--color3: 35, 120, 200;  /* Blue */
-	--color4: 63, 43,  150;  /* Gradient Color*/
-	
-	--text1: 174, 174, 174;  /*accent*/
-	--text2: 107, 107, 107;  /*no accent*/
-}
-:root.theme-light { /* Colors for users customization */
-	--color1: 211, 204, 227;  /* Additional BG */
-	--color2: 219, 219, 219;  /* Background */
-	--color3: 96,  205, 255;  /* Blue */
-	--color4: 63,  43,  150;  /* Gradient Color*/
-}
-
-
-:root {
-    /*main*/
-  --color01: rgb(var(--color1));
-  --color02: rgb(var(--color2));
-  --color03: rgb(var(--color3));
-  --color04: rgb(var(--color4));
-    /*opacity*/
-  --ColorOpacity  : 1;  /* opacity multiplier (0.1-...) */
-  --DisableOpacity: 0;  /* Default=0 (0 or 1) */
-	
-  --opacity01: rgba(var(--color1), calc(var(--ColorOpacity)*0.9*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-  --opacity02: rgba(var(--color2), calc(var(--ColorOpacity)*0.9*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-
-  --opacity020a: rgba(var(--color2), calc(var(--ColorOpacity)*0.8*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-
-  --opacity01a: rgba(var(--color1), calc(var(--ColorOpacity)*0.6*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-  --opacity02a: rgba(var(--color2), calc(var(--ColorOpacity)*0.6*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-
-  --opacity01b: rgba(var(--color1), calc(var(--ColorOpacity)*0.4*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-  --opacity02b: rgb(var(--color2),calc(var(--ColorOpacity)*0.4*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-
-  --opacity01c: rgba(var(--color1), calc(var(--ColorOpacity)*0.2*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-  --opacity02c: rgba(var(--color1), calc(var(--ColorOpacity)*0.2*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-
-  --opacity03 : rgba(var(--color3), calc(var(--ColorOpacity)*0.5*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-  --opacity03a: rgba(var(--color3), calc(var(--ColorOpacity)*0.2*(1 - var(--DisableOpacity)) + var(--DisableOpacity)));
-      /*text*/
-  --text01: rgb(var(--text1));
-  --text02: rgb(var(--text2));
-}
-
-:root {
-  --full01: var(--full01_lite_MUI, rgba(var(--color1), calc(var(--ColorOpacity)*0.9*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-  --full02: var(--full02_lite_MUI, rgba(var(--color2), calc(var(--ColorOpacity)*0.9*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-
-  --full020a: var(--full020a_lite_MUI, rgba(var(--color2), calc(var(--ColorOpacity)*0.8*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-
-  --full01a: var(--full01a_lite_MUI, rgba(var(--color1), calc(var(--ColorOpacity)*0.6*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-  --full02a: var(--full02a_lite_MUI, rgba(var(--color2), calc(var(--ColorOpacity)*0.6*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-
-  --full01b: var(--full01b_lite_MUI, rgba(var(--color1), calc(var(--ColorOpacity)*0.4*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-  --full02b: var(--full02b_lite_MUI, rgba(var(--color2), calc(var(--ColorOpacity)*0.4*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-
-  --full01c: var(--full01c_lite_MUI, rgba(var(--color1), calc(var(--ColorOpacity)*0.2*(1 - var(--DisableOpacity)) + var(--DisableOpacity))))
-  --full02c: var(--full02c_lite_MUI, rgba(var(--color1), calc(var(--ColorOpacity)*0.2*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-
-  --full03 : var(--full03_lite_MUI, rgba(var(--color3), calc(var(--ColorOpacity)*0.8*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-  --full03a: var(--full03a_lite_MUI, rgba(var(--color3), calc(var(--ColorOpacity)*0.4*(1 - var(--DisableOpacity)) + var(--DisableOpacity))));
-}
-
+/**
+* @name Discord Loading Animation
+* @description Standalone loading screen animation for Discord
+* @version 1.0.0
+* @author YourName
+*/
 
 /*=============================================
-=                Loading screen               =
+=          Standalone Loading Animation       =
 =============================================*/
 
-:root{
-  --loading-screen: 3s
+:root {
+  /* Animation Settings */
+  --loading-duration: 3s;
+  --loading-text: "SoftX";
+  --loading-font: "Comfortaa", sans-serif;
+  
+  /* Color Settings - Change these to match your theme */
+  --loading-bg-primary: 9, 18, 24;      /* Main background color (RGB values) */
+  --loading-bg-secondary: 30, 40, 50;   /* Secondary background color (RGB values) */
+  --loading-accent: 35, 120, 200;       /* Accent color for effects (RGB values) */
+  --loading-text-color: 35, 120, 200;   /* Text color (RGB values) */
 }
 
-/*----------  Keyframes  ----------*/
-@keyframes loaderr{
-  to{
-    pointer-events : none;
-    backdrop-filter: none;
-    background     : var(--opacity02b);
-  }
-}
+/* Import font if needed */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-@keyframes loading-effects {
-  0%{
+/*----------  Animation Keyframes  ----------*/
+@keyframes loading-app-effects {
+  0% {
     filter: blur(4px);
     transform: scale(1);
   }
-  50%{
+  50% {
     filter: blur(25px);
     transform: scale(1.1);
   }
-  100%{
-    filter: none;
-    transform: scale(1);
+  100% {
+    filter: none !important;
+    transform: scale(1) !important;
   }
 }
 
-@keyframes loading-bg {
-  0%{
-    box-shadow: 0px 0px 100px 30px inset var(--color03);
+@keyframes loading-overlay-bg {
+  0% {
+    box-shadow: 0px 0px 100px 30px inset rgb(var(--loading-accent));
+    opacity: 1;
   }
-  50%{
-    box-shadow: 0px 0px 100px 50px inset var(--color03);
+  50% {
+    box-shadow: 0px 0px 100px 50px inset rgb(var(--loading-accent));
     filter: blur(100px);
+    opacity: 1;
   }
-  70%{
-    box-shadow: 0px 0px 30px 50px inset var(--color03);
+  70% {
+    box-shadow: 0px 0px 30px 50px inset rgb(var(--loading-accent));
+    opacity: 1;
   }
-  100%{
-    box-shadow: 0;
+  100% {
+    box-shadow: none !important;
+    filter: none !important;
+    opacity: 0;
   }
 }
 
-@keyframes loadingscreen_unblur_title {
-  0%{
+@keyframes loading-text-effect {
+  0% {
     filter: blur(12px);
-    text-shadow: 0 0 500px var(--color03);
+    text-shadow: 0 0 500px rgb(var(--loading-accent));
+    opacity: 1;
   }
-  50%{
+  50% {
     filter: blur(0px);
     text-shadow: 0 0 10px currentcolor, 0 0 20px currentcolor;
+    opacity: 1;
   }
-  100%{
+  100% {
     filter: blur(36px);
-    text-shadow: 0 0 500px var(--color03);
+    text-shadow: 0 0 500px rgb(var(--loading-accent));
+    opacity: 0;
   }
 }
-.app_a3002d{
-  animation: loading-effects var(--loading-screen) forwards !important;
-  animation-fill-mode: none; /* This ensures the animation doesn't stick to final state */
+
+@keyframes fade-out-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  99% {
+    opacity: 0;
+    visibility: visible;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
-/*----------  BG  ----------*/
-
-.app_a3002d{
-  animation: loading-effects var(--loading-screen)!important;
+/*----------  Main App Animation  ----------*/
+.app_a3002d,
+.app-2rEoOp {
+  animation: loading-app-effects var(--loading-duration) ease-in-out !important;
+  animation-fill-mode: none !important;
 }
 
-.appMount__51fd7::before{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  box-shadow: 0 0 100px 30px inset var(--color03);
-
+/*----------  Loading Overlay  ----------*/
+.appMount_ea7e65::before,
+.appMount-3lHmkl::before,
+.appMount__51fd7::before {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  
+  background: rgba(var(--loading-bg-primary), 0.9);
+  box-shadow: 0 0 100px 30px inset rgb(var(--loading-accent));
+  
   animation: 
-  loading-bg var(--loading-screen) alternate ease-in-out,
-  fade-out var(--loading-screen) ease-in-out forwards 1s,
-  hide var(--loading-screen) linear forwards var(--loading-screen);
-
+    loading-overlay-bg var(--loading-duration) ease-in-out,
+    fade-out-hide var(--loading-duration) ease-in-out forwards;
+  
   content: "";
-  z-index: 999;
-
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-/*----------  Text  ----------*/
-
-.containerTop__45edc {
-	display        : flex;
-	justify-content: center;
-	align-items    : center;
-
-  position: absolute;
-  left: 0!important;
-  bottom: 0!important;
-  transform: none;
-
-	width  : 100vw;
-	z-index: 9999;
-
-	font-weight: bold;
+/*----------  Loading Text Container  ----------*/
+.containerTop__45edc,
+.typeWindows_a934d8 .wordmark_fc4f04,
+.typeWindows-1za-n7 .wordmark-2iDDfm {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: 10000 !important;
   
-  animation: 
-  fade-out var(--loading-screen) ease-in-out forwards 1s,
-  hide var(--loading-screen) linear forwards var(--loading-screen),
-  loaderr forwards 1s 5s!important;
+  animation: fade-out-hide var(--loading-duration) ease-in-out forwards;
 }
 
-.containerTop__45edc::after {
-	position: absolute;
-
-	content    : var(--FVUI);
-
-  /* font-family: anurati!important;
-  text-transform: uppercase; */
-
-	font-size  : 150px;
-	color      : var(--color03);
-	text-shadow: 0 0 10px currentcolor, 0 0 20px currentcolor;
-  animation: loadingscreen_unblur_title 3s forwards;
+/*----------  Loading Text  ----------*/
+.containerTop__45edc::after,
+.typeWindows_a934d8 .wordmark_fc4f04::after,
+.typeWindows-1za-n7 .wordmark-2iDDfm::after {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  
+  content: var(--loading-text) !important;
+  font-family: var(--loading-font) !important;
+  font-size: 150px !important;
+  font-weight: bold !important;
+  color: rgb(var(--loading-text-color)) !important;
+  text-shadow: 0 0 10px currentcolor, 0 0 20px currentcolor !important;
+  white-space: nowrap !important;
+  
+  animation: loading-text-effect var(--loading-duration) ease-in-out forwards;
 }
 
-
+/*----------  Version Text (Optional)  ----------*/
 .containerTop__45edc::before {
-	position: absolute;
-
-  bottom: 50px;
+  position: absolute !important;
+  bottom: -80px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   
-	content  : var(--version);
-	font-size: 30px;
-	color    : var(--color03);
+  content: "Loading..." !important;
+  font-family: var(--loading-font) !important;
+  font-size: 30px !important;
+  color: rgb(var(--loading-text-color)) !important;
+  opacity: 0.7;
+  
+  animation: fade-out-hide var(--loading-duration) ease-in-out forwards;
+}
+
+/*----------  Cleanup - Ensure everything resets after animation  ----------*/
+.app_a3002d,
+.app-2rEoOp {
+  animation-iteration-count: 1 !important;
+}
+
+/* Force cleanup after animation completes */
+.appMount_ea7e65::before,
+.appMount-3lHmkl::before,
+.appMount__51fd7::before {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
+}
+
+.containerTop__45edc,
+.typeWindows_a934d8 .wordmark_fc4f04,
+.typeWindows-1za-n7 .wordmark-2iDDfm {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
 }
