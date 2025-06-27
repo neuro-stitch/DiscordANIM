@@ -99,6 +99,10 @@
     filter: blur(25px);
     transform: scale(1.1);
   }
+  100%{
+    filter: none;
+    transform: scale(1);
+  }
 }
 
 @keyframes loading-bg {
