@@ -135,6 +135,10 @@
     text-shadow: 0 0 500px var(--color03);
   }
 }
+.app_a3002d{
+  animation: loading-effects var(--loading-screen) forwards !important;
+  animation-fill-mode: none; /* This ensures the animation doesn't stick to final state */
+}
 
 /*----------  BG  ----------*/
 
