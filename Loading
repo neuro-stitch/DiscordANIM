@@ -2,7 +2,7 @@
 * @name Discord Loading Animation
 * @description Standalone loading screen animation for Discord
 * @version 1.0.0
-* @author neuro-stitcb
+* @author YourName
 */
 
 /*=============================================
@@ -12,7 +12,7 @@
 :root {
   /* Animation Settings */
   --loading-duration: 3s;
-  --loading-text: "Welcome Back";
+  --loading-text: "SoftX";
   --loading-font: "Comfortaa", sans-serif;
   
   /* Color Settings - Change these to match your theme */
@@ -98,17 +98,44 @@
   }
 }
 
-/*----------  Main App Animation  ----------*/
+/*----------  Main App Animation (Triggers on every load/reload)  ----------*/
 .app_a3002d,
 .app-2rEoOp {
   animation: loading-app-effects var(--loading-duration) ease-in-out !important;
   animation-fill-mode: none !important;
+  animation-iteration-count: infinite !important;
+  animation-play-state: running !important;
 }
 
-/*----------  Loading Overlay  ----------*/
-.appMount_ea7e65::before,
-.appMount-3lHmkl::before,
-.appMount__51fd7::before {
+/* Reset and retrigger animation on DOM changes */
+.appMount_ea7e65,
+.appMount-3lHmkl,
+.appMount__51fd7 {
+  animation: none !important;
+}
+
+.appMount_ea7e65.loading,
+.appMount-3lHmkl.loading,
+.appMount__51fd7.loading,
+body:not(.app-focused) .appMount_ea7e65,
+body:not(.app-focused) .appMount-3lHmkl,
+body:not(.app-focused) .appMount__51fd7 {
+  animation: none !important;
+}
+
+/* Trigger on connection states */
+.app_a3002d[class*="connecting"],
+.app_a3002d[class*="loading"],
+.app-2rEoOp[class*="connecting"],
+.app-2rEoOp[class*="loading"] {
+  animation: loading-app-effects var(--loading-duration) ease-in-out !important;
+  animation-fill-mode: none !important;
+}
+
+/*----------  Loading Overlay (Triggers on every load/reload)  ----------*/
+body .appMount_ea7e65::before,
+body .appMount-3lHmkl::before,
+body .appMount__51fd7::before {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -127,10 +154,22 @@
   pointer-events: auto;
 }
 
-/*----------  Loading Text Container  ----------*/
-.containerTop__45edc,
-.typeWindows_a934d8 .wordmark_fc4f04,
-.typeWindows-1za-n7 .wordmark-2iDDfm {
+/* Retrigger overlay on Discord state changes */
+body:not(.app-focused) .appMount_ea7e65::before,
+body:not(.app-focused) .appMount-3lHmkl::before,
+body:not(.app-focused) .appMount__51fd7::before,
+[class*="connecting"] .appMount_ea7e65::before,
+[class*="connecting"] .appMount-3lHmkl::before,
+[class*="connecting"] .appMount__51fd7::before {
+  animation: 
+    loading-overlay-bg var(--loading-duration) ease-in-out,
+    fade-out-hide var(--loading-duration) ease-in-out forwards !important;
+}
+
+/*----------  Loading Text Container (Triggers on every load/reload)  ----------*/
+body .containerTop__45edc,
+body .typeWindows_a934d8 .wordmark_fc4f04,
+body .typeWindows-1za-n7 .wordmark-2iDDfm {
   position: fixed !important;
   top: 50% !important;
   left: 50% !important;
@@ -140,6 +179,16 @@
   z-index: 10000 !important;
   
   animation: fade-out-hide var(--loading-duration) ease-in-out forwards;
+}
+
+/* Retrigger text on Discord state changes */
+body:not(.app-focused) .containerTop__45edc,
+body:not(.app-focused) .typeWindows_a934d8 .wordmark_fc4f04,
+body:not(.app-focused) .typeWindows-1za-n7 .wordmark-2iDDfm,
+[class*="connecting"] .containerTop__45edc,
+[class*="connecting"] .typeWindows_a934d8 .wordmark_fc4f04,
+[class*="connecting"] .typeWindows-1za-n7 .wordmark-2iDDfm {
+  animation: fade-out-hide var(--loading-duration) ease-in-out forwards !important;
 }
 
 /*----------  Loading Text  ----------*/
@@ -162,20 +211,9 @@
   animation: loading-text-effect var(--loading-duration) ease-in-out forwards;
 }
 
-/*----------  Version Text (Optional)  ----------*/
+/*----------  Remove Loading Text  ----------*/
 .containerTop__45edc::before {
-  position: absolute !important;
-  bottom: -80px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  
-  content: "Loading..." !important;
-  font-family: var(--loading-font) !important;
-  font-size: 30px !important;
-  color: rgb(var(--loading-text-color)) !important;
-  opacity: 0.7;
-  
-  animation: fade-out-hide var(--loading-duration) ease-in-out forwards;
+  display: none !important;
 }
 
 /*----------  Cleanup - Ensure everything resets after animation  ----------*/
