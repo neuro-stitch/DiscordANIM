@@ -12,7 +12,7 @@
 :root {
   /* Animation Settings */
   --loading-duration: 3s;
-  --loading-text: "SoftX";
+  --loading-text: "Welcome Back";
   --loading-font: "Comfortaa", sans-serif;
   
   /* Color Settings - Change these to match your theme */
